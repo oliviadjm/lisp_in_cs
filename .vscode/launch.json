@@ -1,0 +1,16 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run MyLisp Program",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "/Users/vivmonteiro/lisp_in_cs/MyLisp/bin/Debug/net9.0/MyLisp.dll",
+            "args": [],
+            "cwd": "/Users/vivmonteiro/lisp_in_cs/MyLisp/",
+            "stopAtEntry": false,
+            "console": "integratedTerminal"
+        }
+    ]
+}

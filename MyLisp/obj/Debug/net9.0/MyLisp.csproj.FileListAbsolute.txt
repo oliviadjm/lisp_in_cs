@@ -1,0 +1,14 @@
+/Users/vivmonteiro/lisp_in_cs/MyLisp/bin/Debug/net9.0/MyLisp
+/Users/vivmonteiro/lisp_in_cs/MyLisp/bin/Debug/net9.0/MyLisp.deps.json
+/Users/vivmonteiro/lisp_in_cs/MyLisp/bin/Debug/net9.0/MyLisp.runtimeconfig.json
+/Users/vivmonteiro/lisp_in_cs/MyLisp/bin/Debug/net9.0/MyLisp.dll
+/Users/vivmonteiro/lisp_in_cs/MyLisp/bin/Debug/net9.0/MyLisp.pdb
+/Users/vivmonteiro/lisp_in_cs/MyLisp/obj/Debug/net9.0/MyLisp.GeneratedMSBuildEditorConfig.editorconfig
+/Users/vivmonteiro/lisp_in_cs/MyLisp/obj/Debug/net9.0/MyLisp.AssemblyInfoInputs.cache
+/Users/vivmonteiro/lisp_in_cs/MyLisp/obj/Debug/net9.0/MyLisp.AssemblyInfo.cs
+/Users/vivmonteiro/lisp_in_cs/MyLisp/obj/Debug/net9.0/MyLisp.csproj.CoreCompileInputs.cache
+/Users/vivmonteiro/lisp_in_cs/MyLisp/obj/Debug/net9.0/MyLisp.dll
+/Users/vivmonteiro/lisp_in_cs/MyLisp/obj/Debug/net9.0/refint/MyLisp.dll
+/Users/vivmonteiro/lisp_in_cs/MyLisp/obj/Debug/net9.0/MyLisp.pdb
+/Users/vivmonteiro/lisp_in_cs/MyLisp/obj/Debug/net9.0/MyLisp.genruntimeconfig.cache
+/Users/vivmonteiro/lisp_in_cs/MyLisp/obj/Debug/net9.0/ref/MyLisp.dll
