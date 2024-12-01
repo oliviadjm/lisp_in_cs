@@ -1,2 +1,0 @@
-IMPLS = cs
-cs_STEP_TO_PROG =            impls/cs/$($(1)).exe

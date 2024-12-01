@@ -12,3 +12,4 @@
 /Users/vivmonteiro/lisp_in_cs/MyLisp/obj/Debug/net9.0/MyLisp.pdb
 /Users/vivmonteiro/lisp_in_cs/MyLisp/obj/Debug/net9.0/MyLisp.genruntimeconfig.cache
 /Users/vivmonteiro/lisp_in_cs/MyLisp/obj/Debug/net9.0/ref/MyLisp.dll
+/Users/vivmonteiro/lisp_in_cs/MyLisp/obj/Debug/net9.0/MyLisp.sourcelink.json
