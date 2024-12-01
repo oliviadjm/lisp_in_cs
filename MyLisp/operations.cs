@@ -1,7 +1,7 @@
 using System;
 
 namespace MyLisp {
-    public class operations {
+    public class Operations {
 
         public object SENil (List <SExpr> inputList) {
             object obj = inputList[0];
@@ -18,7 +18,7 @@ namespace MyLisp {
 
         public object SESym (List <SExpr> inputList) {
             object obj = inputList[0];
-            if (obj is SExpr.Atom symAtom && symAtom.AtomType == Symbol) {
+            if (obj is SExpr.Atom symAtom && symAtom.Type == SExpr.AtomType.Symbol) {
                 return true;
             }
             else {
@@ -28,7 +28,7 @@ namespace MyLisp {
 
         public object SENum (List <SExpr> inputList) {
             object obj = inputList[0];
-            if (obj is SExpr.Atom numAtom && symAtom.AtomType == Number) {
+            if (obj is SExpr.Atom numAtom && numAtom.Type == SExpr.AtomType.Number) {
                 return true;
             }
             else {
@@ -46,16 +46,16 @@ namespace MyLisp {
             }
         }
 
-        public consCell () {
+        //public consCell () {
 
-        }
+        //}
 
-        public carVal () {
+        //public carVal () {
 
-        }
+        //}
 
-        public cdrVal () {
+        //public cdrVal () {
 
-        }
+        //}
     }
 }

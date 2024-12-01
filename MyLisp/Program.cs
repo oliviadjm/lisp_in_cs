@@ -3,16 +3,24 @@ using System.IO;
 
 namespace MyLisp {
     class MyLisp {
-        static string read(string input){
+        static SExpr read(string input){
             return Reader.readStr(input);
         }
 
-        static string eval(string input) {
-            return input;
+        static SExpr eval(SExpr input) {
+            //if (input.Type == SExpr.AtomType.Symbol) {
+                //return input.Value;
+            //}
+            //else if (input is SEList) {
+                //?????
+            //}
+            //else {
+                return input;
+            //}
         }
 
-        static string print(string input) {
-            return input;
+        static string print(SExpr input) {
+            return Printer.prStr(input);
         }
 
         static string repl(string input) {

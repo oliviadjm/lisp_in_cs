@@ -26,7 +26,10 @@ namespace MyLisp {
             public string peek() {
                 return tokens[currPos];
             }
-        
+
+            public string prevPeek() {
+                return tokens[currPos - 1];
+            }        
         
 
         public static List <string> tokenize(string input) {
@@ -42,15 +45,22 @@ namespace MyLisp {
                 else if ()
             }
             */
-            Regex regex = new Regex(regexStr);
-            MatchCollection matches = regex.Matches(input); //match input string regex's to ones from the list
-            foreach (Match match in matches) {
-                string token = match.Value;
-                token = token.Trim(); //get rid of the whitespace
-                tokens.Add(token);
-            } 
+            //Regex regex = new Regex(regexStr);
+            //MatchCollection matches = regex.Matches(input); //match input string regex's to ones from the list
+            //foreach (Match match in matches) {
+                //string token = match.Value;
+                //token = token.Trim(); //get rid of the whitespace
+                //tokens.Add(token);
+            //} 
             //ADD ERROR HANDLING?? null tokens etc
-            
+            Regex regex = new Regex(regexStr);
+            foreach (Match match in regex.Matches(input)) {
+                string token = match.Groups[1].Value;
+                if ((token != null) && !(token == "") && !(token[0] == ';')) {
+                    //Console.WriteLine("match: ^" + match.Groups[1] + "$");
+                    tokens.Add(token);
+                }
+            }
             return tokens;
 
         }
@@ -75,10 +85,10 @@ namespace MyLisp {
                 return SExpr.False;
             }
             else if (Regex.IsMatch(token, @"^-?\d+(\.\d+)?$")) {
-                return new SExpr.Atom(inputReader.peek(), SExpr.AtomType.Number);
+                return new SExpr.Atom(inputReader.prevPeek(), SExpr.AtomType.Number);
             }
             else if (Regex.IsMatch(token, @"^[a-zA-Z_\+\-\*/=!<>&|]+[a-zA-Z0-9_\+\-\*/=!<>&|]*$")) {
-                return new SExpr.Atom(inputReader.peek(), SExpr.AtomType.Symbol);
+                return new SExpr.Atom(inputReader.prevPeek(), SExpr.AtomType.Symbol);
             }
             //else if (Regex.IsMatch(token, @"^\"(\\.|[^\"])*\"$"))) {
                 //return new SExpr.Atom(inputReader.tokens[currPos], AtomType.String);
@@ -94,17 +104,21 @@ namespace MyLisp {
 
         public static SExpr readList(Reader inputReader) {
             List<SExpr> tokenVals = new();
+            inputReader.next(); //consume opening paren
             while (inputReader.peek() != ")") {
-                readForm(inputReader);
                 //add if it reaches eof before ) then throw an error
+                if (inputReader.peek() == null) {
+                    throw new Exception("Unexpected EOF while reading list. Missing closing ')'");
+                }
+                tokenVals.Add(readForm(inputReader));
             }
-            inputReader.next();
+            inputReader.next(); //consume closing paren
 
             return new SExpr.SEList(tokenVals);
             
         }
 
-        public static SExpr readForm(Reader inputReader) { //need to add mal data type????
+        public static SExpr readForm(Reader inputReader) { //added sexpr datatype
             if (inputReader.peek() == "(") {
                 return readList(inputReader);
             }
@@ -114,8 +128,8 @@ namespace MyLisp {
 
         }
 
-        //FIXME return values - this doesnt return anything bc return vals dont make sense, think more
-        public static string readStr(string input) {
+        //FIXEd return values - this doesnt return anything bc return vals dont make sense, think more
+        public static SExpr readStr(string input) {
             //tokenize input
             List <string> tokenList = tokenize(input);
 
@@ -123,7 +137,7 @@ namespace MyLisp {
             Reader reader = new Reader(tokenList);
 
             //call readForm with reader instance
-            readForm(reader);
+            return readForm(reader);
         }
 
     }
