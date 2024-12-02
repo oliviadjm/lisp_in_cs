@@ -206,51 +206,55 @@ namespace MyLisp {
         }
 
         public static SExpr lessThan (List <SExpr> inputNums) {
-            double[] result = new double[2];
-            //add error handling if not numbers
-
-            if (result[0] < result[1]) {
-                return SExpr.True;
+            if (inputNums[0] is SExpr.Atom num1 && num1.Type == SExpr.AtomType.Number &&
+             inputNums[1] is SExpr.Atom num2 && num2.Type == SExpr.AtomType.Number) {
+                if (double.Parse(num1.Value) < double.Parse(num2.Value)) {
+                    return SExpr.True;
+                }
+                else {
+                    return SExpr.False;
+                }
             }
-            else {
-                return SExpr.False;
-            }
+            throw new Exception("Arguments to lt must be numbers");
         }
 
         public static SExpr lessThanEqu (List <SExpr> inputNums) {
-            double[] result = new double[2];
-            //add error handling if not numbers
-
-            if (result[0] <= result[1]) {
-                return SExpr.True;
+            if (inputNums[0] is SExpr.Atom num1 && num1.Type == SExpr.AtomType.Number &&
+             inputNums[1] is SExpr.Atom num2 && num2.Type == SExpr.AtomType.Number) {
+                if (double.Parse(num1.Value) <= double.Parse(num2.Value)) {
+                    return SExpr.True;
+                }
+                else {
+                    return SExpr.False;
+                }
             }
-            else {
-                return SExpr.False;
-            }
+            throw new Exception("Arguments to lte must be numbers");
         }
 
         public static SExpr gtrThan (List <SExpr> inputNums) {
-            double[] result = new double[2];
-            //add error handling if not numbers
-
-            if (result[0] > result[1]) {
-                return SExpr.True;
+            if (inputNums[0] is SExpr.Atom num1 && num1.Type == SExpr.AtomType.Number &&
+             inputNums[1] is SExpr.Atom num2 && num2.Type == SExpr.AtomType.Number) {
+                if (double.Parse(num1.Value) > double.Parse(num2.Value)) {
+                    return SExpr.True;
+                }
+                else {
+                    return SExpr.False;
+                }
             }
-            else {
-                return SExpr.False;
-            }
+            throw new Exception("Arguments to gt must be numbers");
         }
 
         public static SExpr gtrThanEqu (List <SExpr> inputNums) {
-            double[] result = new double[2];
-            //add error handling if not numbers
-
-            if (result[0] >= result[1]) {
-                return SExpr.True;
+            if (inputNums[0] is SExpr.Atom num1 && num1.Type == SExpr.AtomType.Number &&
+             inputNums[1] is SExpr.Atom num2 && num2.Type == SExpr.AtomType.Number) {
+                if (double.Parse(num1.Value) >= double.Parse(num2.Value)) {
+                    return SExpr.True;
+                }
+                else {
+                    return SExpr.False;
+                }
             }
-            else {
-                return SExpr.False;
-            }
+            throw new Exception("Arguments to gte must be numbers");
         }
 
         //eq
