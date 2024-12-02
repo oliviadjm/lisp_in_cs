@@ -55,5 +55,32 @@ namespace MyLisp {
                 return $"({string.Join(" ", Elements)})";
             }
         }
+
+        public class SEFunction : SExpr {
+            public Func<List<SExpr>, SExpr> Function { get; }
+
+            public SEFunction(Func<List<SExpr>, SExpr> function) {
+                Function = function;
+            }
+
+            public SExpr Invoke(List<SExpr> args) {
+                return Function(args);
+            }
+
+            public override string ToString() => "<function>";
+        }
+
+        public class Quote : SExpr {
+            public SExpr Expression { get; }
+
+            public Quote(SExpr expression) {
+                Expression = expression;
+            }
+
+            // Optionally, override ToString() for easier debugging
+            public override string ToString() => "'" + Expression.ToString();
+        }
+
+
     }
 }

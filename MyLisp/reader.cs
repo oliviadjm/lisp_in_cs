@@ -96,6 +96,10 @@ namespace MyLisp {
             //else if () {
                 //return new SExpr.Atom(inputReader.tokens[currPos], AtomType.Operation);
             //}
+            else if (token == "'") { //for quoted lists for cons
+                SExpr quotedExpression = readForm(inputReader);
+                return new SExpr.Quote(quotedExpression);
+            }
             //else throw an error??
             else {
                 throw new Exception($"Unrecognized token: {token}");
@@ -138,7 +142,7 @@ namespace MyLisp {
 
             //call readForm with reader instance
             return readForm(reader);
-        }
 
+        }
     }
 }
