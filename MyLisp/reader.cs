@@ -87,7 +87,7 @@ namespace MyLisp {
             else if (Regex.IsMatch(token, @"^-?\d+(\.\d+)?$")) {
                 return new SExpr.Atom(inputReader.prevPeek(), SExpr.AtomType.Number);
             }
-            else if (Regex.IsMatch(token, @"^[a-zA-Z_\+\-\*/=!<>&|]+[a-zA-Z0-9_\+\-\*/=!<>&|]*$")) {
+            else if (Regex.IsMatch(token, @"^[a-zA-Z_\+\-\*/=!<>?&|]+[a-zA-Z0-9_\+\-\*/=!?<>&|]*$")) {
                 return new SExpr.Atom(inputReader.prevPeek(), SExpr.AtomType.Symbol);
             }
             //else if (Regex.IsMatch(token, @"^\"(\\.|[^\"])*\"$"))) {

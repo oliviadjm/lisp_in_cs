@@ -3,46 +3,46 @@ using System;
 namespace MyLisp {
     public class Operations {
 
-        public object SENil (List <SExpr> inputList) {
+        public static SExpr SENil (List <SExpr> inputList) {
             object obj = inputList[0];
-            if (obj == null) {
-                return true;
+            if (obj == SExpr.Nil) {
+                return SExpr.True;
             }
             else if (obj is SExpr.SEList nestedList &&  nestedList.Elements.Count == 0) {
-                return true;
+                return SExpr.True;
             }
             else {
-                return false;
+                return SExpr.False;
             }
         }
 
-        public object SESym (List <SExpr> inputList) {
+        public static SExpr SESym (List <SExpr> inputList) {
             object obj = inputList[0];
             if (obj is SExpr.Atom symAtom && symAtom.Type == SExpr.AtomType.Symbol) {
-                return true;
+                return SExpr.True;
             }
             else {
-                return false;
+                return SExpr.False;
             }
         }
 
-        public object SENum (List <SExpr> inputList) {
+        public static SExpr SENum (List <SExpr> inputList) {
             object obj = inputList[0];
             if (obj is SExpr.Atom numAtom && numAtom.Type == SExpr.AtomType.Number) {
-                return true;
+                return SExpr.True;
             }
             else {
-                return false;
+                return SExpr.False;
             }
         }
 
-        public object SEListFunc (List <SExpr> inputList) {
+        public static SExpr SEListFunc (List <SExpr> inputList) {
             object obj = inputList[0];
             if (obj is SExpr.SEList) {
-                return true;
+                return SExpr.True;
             }
             else {
-                return false;
+                return SExpr.False;
             }
         }
 
@@ -205,7 +205,7 @@ namespace MyLisp {
             throw new Exception("Non-number argument passed to 'mod'.");
         }
 
-        public SExpr lessThan (List <SExpr> inputNums) {
+        public static SExpr lessThan (List <SExpr> inputNums) {
             double[] result = new double[2];
             //add error handling if not numbers
 
@@ -217,7 +217,7 @@ namespace MyLisp {
             }
         }
 
-        public SExpr lessThanEqu (List <SExpr> inputNums) {
+        public static SExpr lessThanEqu (List <SExpr> inputNums) {
             double[] result = new double[2];
             //add error handling if not numbers
 
@@ -229,7 +229,7 @@ namespace MyLisp {
             }
         }
 
-        public SExpr gtrThan (List <SExpr> inputNums) {
+        public static SExpr gtrThan (List <SExpr> inputNums) {
             double[] result = new double[2];
             //add error handling if not numbers
 
@@ -241,7 +241,7 @@ namespace MyLisp {
             }
         }
 
-        public SExpr gtrThanEqu (List <SExpr> inputNums) {
+        public static SExpr gtrThanEqu (List <SExpr> inputNums) {
             double[] result = new double[2];
             //add error handling if not numbers
 
@@ -254,9 +254,47 @@ namespace MyLisp {
         }
 
         //eq
+        public static SExpr SEEqu (List<SExpr> args) {
+            if (args.Count != 2) {
+                throw new Exception("eq expects exactly two arguments");
+            }
+
+            var expr1 = args[0];
+            var expr2 = args[1];
+
+            // Check if both arguments are atoms
+            if (expr1 is SExpr.Atom atom1 && expr2 is SExpr.Atom atom2) {
+                // Compare their values
+                if (atom1.Value == atom2.Value) {
+                    return SExpr.True;
+                }
+                else {
+                    return SExpr.False;
+                }
+            }
+
+            // If either argument is not an atom, return false
+            return SExpr.False;
+        }
+
 
 
         //not
+        public static SExpr SENot(List<SExpr> args) {
+            if (args.Count != 1) {
+                throw new Exception("not expects exactly one argument");
+            }
+
+            var arg = args[0];
+
+            // Return True if the argument is Nil or False, otherwise return False
+            if (arg == SExpr.Nil || arg == SExpr.False) {
+                return SExpr.True;
+            }
+            else {
+                return SExpr.False;
+            }
+        }
 
 
 

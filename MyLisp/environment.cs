@@ -14,6 +14,16 @@ namespace MyLisp {
             {"cons", new SExpr.SEFunction(Operations.consCell)},
             {"car", new SExpr.SEFunction(Operations.carVal)},
             {"cdr", new SExpr.SEFunction(Operations.cdrVal)},
+            {"lt", new SExpr.SEFunction(Operations.lessThan)},
+            {"gt", new SExpr.SEFunction(Operations.gtrThan)},
+            {"lte", new SExpr.SEFunction(Operations.lessThanEqu)},
+            {"gte", new SExpr.SEFunction(Operations.gtrThanEqu)},
+            {"nil?", new SExpr.SEFunction(Operations.SENil)},
+            {"symbol?", new SExpr.SEFunction(Operations.SESym)},
+            {"number?", new SExpr.SEFunction(Operations.SENum)},
+            {"list?", new SExpr.SEFunction(Operations.SEListFunc)},
+            {"eq?", new SExpr.SEFunction(Operations.SEEqu)},
+            {"not", new SExpr.SEFunction(Operations.SENot)},
         };
 
        
