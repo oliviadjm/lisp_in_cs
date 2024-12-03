@@ -91,6 +91,10 @@ namespace MyLisp {
             //else if () {
                 //return new SExpr.Atom(inputReader.tokens[currPos], AtomType.Operation);
             //}
+            else if (Regex.IsMatch(token, "^\"(\\\\.|[^\"])*\"$")) { //match string literals
+                string unescaped = Regex.Unescape(token.Substring(1, token.Length - 2)); //remove quotes and unescape
+                return new SExpr.Atom(unescaped, SExpr.AtomType.String);
+            }
             else if (token == "'") { //for quoted lists for cons
                 SExpr quotedExpression = readForm(inputReader);
                 return new SExpr.Quote(quotedExpression);
