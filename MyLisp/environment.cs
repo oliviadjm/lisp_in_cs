@@ -24,6 +24,8 @@ namespace MyLisp {
             {"list?", new SExpr.SEFunction(Operations.SEListFunc)},
             {"eq?", new SExpr.SEFunction(Operations.SEEqu)},
             {"not", new SExpr.SEFunction(Operations.SENot)},
+            {"and", new SExpr.SEFunction(Operations.SEAnd)},
+            {"or", new SExpr.SEFunction(Operations.SEOr)},
         };
 
        

@@ -258,13 +258,13 @@ namespace MyLisp {
         }
 
         //eq
-        public static SExpr SEEqu (List<SExpr> args) {
-            if (args.Count != 2) {
+        public static SExpr SEEqu (List <SExpr> input) {
+            if (input.Count != 2) {
                 throw new Exception("eq expects exactly two arguments");
             }
 
-            var expr1 = args[0];
-            var expr2 = args[1];
+            var expr1 = input[0];
+            var expr2 = input[1];
 
             // Check if both arguments are atoms
             if (expr1 is SExpr.Atom atom1 && expr2 is SExpr.Atom atom2) {
@@ -284,12 +284,12 @@ namespace MyLisp {
 
 
         //not
-        public static SExpr SENot(List<SExpr> args) {
-            if (args.Count != 1) {
+        public static SExpr SENot (List <SExpr> input) {
+            if (input.Count != 1) {
                 throw new Exception("not expects exactly one argument");
             }
 
-            var arg = args[0];
+            var arg = input[0];
 
             // Return True if the argument is Nil or False, otherwise return False
             if (arg == SExpr.Nil || arg == SExpr.False) {
@@ -299,6 +299,63 @@ namespace MyLisp {
                 return SExpr.False;
             }
         }
+
+        //and
+        /*public static SExpr SEAnd (List <SExpr> input) {
+            if (input[0] is SExpr.Atom atomAnd1 && atomAnd1 == SExpr.Nil) {
+                return SExpr.False;
+            }
+            else {
+                if (input[1] is SExpr.Atom atomAnd2 && atomAnd2 == SExpr.Nil) {
+                    return SExpr.False;
+                }
+                else {
+                    return SExpr.True;
+                }
+            }
+        }
+        */
+
+
+        //or
+        /*public static SExpr SEOr (List <SExpr> input) {
+            if (input[0] is SExpr.Atom atomOr1 && atomOr1 != SExpr.Nil) {
+                return SExpr.True;
+            }
+            else {
+                if (input[1] is SExpr.Atom atomOr2 && atomOr2 != SExpr.Nil) {
+                    return SExpr.True;
+                }
+                else {
+                    return SExpr.False;
+                }
+            }
+        }
+        */
+        public static SExpr SEAnd (List <SExpr> input) {
+            foreach (var expr in input) {
+                if (expr is SExpr.Atom atomAnd && SExpr.ToBool(atomAnd) == false) {
+                    return SExpr.False; 
+                }
+            }
+            return SExpr.True;
+        }
+
+        public static SExpr SEOr (List <SExpr> input) {
+            foreach (var expr in input) {
+                if (expr is SExpr.Atom atomOr && SExpr.ToBool(atomOr) == true) {
+                    return expr; //return first non-nil value
+                }
+            }
+            return SExpr.False; //return false if all are nil
+        }
+
+
+        //if
+
+
+
+        //cond
 
 
 

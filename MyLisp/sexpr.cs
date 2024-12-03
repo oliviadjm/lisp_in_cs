@@ -81,6 +81,14 @@ namespace MyLisp {
             public override string ToString() => "'" + Expression.ToString();
         }
 
+        //function for mapping sexprs to bool equivalent
+        public static bool ToBool(SExpr expr) {
+            if (expr == SExpr.Nil) return false; // `nil` is false
+            //if (expr is SExpr.Atom atom && atom.Type == SExpr.AtomType.Constant && atom.Value == "false") return false; // `false` is false
+            if (expr is SExpr.Atom atom && atom.Value == "false") return false;
+            return true; //everything else is true
+        }
+
 
     }
 }
