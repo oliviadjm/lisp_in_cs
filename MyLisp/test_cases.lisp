@@ -2,7 +2,7 @@
 
 (nil? nil) ; true
 (nil? 0) ; false
-(symbol? 'x) ; true
+(symbol? x) ; true
 (symbol? 123) ; false
 (number? 42) ; true
 (number? x) ; false
