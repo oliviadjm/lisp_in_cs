@@ -266,9 +266,9 @@ namespace MyLisp {
             var expr1 = input[0];
             var expr2 = input[1];
 
-            // Check if both arguments are atoms
+            //check if both arguments are atoms
             if (expr1 is SExpr.Atom atom1 && expr2 is SExpr.Atom atom2) {
-                // Compare their values
+                //compare their values
                 if (atom1.Value == atom2.Value) {
                     return SExpr.True;
                 }
@@ -277,7 +277,7 @@ namespace MyLisp {
                 }
             }
 
-            // If either argument is not an atom, return false
+            //if either argument is not an atom, return false
             return SExpr.False;
         }
 
@@ -291,7 +291,7 @@ namespace MyLisp {
 
             var arg = input[0];
 
-            // Return True if the argument is Nil or False, otherwise return False
+            //return true if the argument is nil or false, otherwise return false
             if (arg == SExpr.Nil || arg == SExpr.False) {
                 return SExpr.True;
             }

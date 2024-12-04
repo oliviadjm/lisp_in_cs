@@ -77,7 +77,6 @@ namespace MyLisp {
                 Expression = expression;
             }
 
-            // Optionally, override ToString() for easier debugging
             public override string ToString() => "'" + Expression.ToString();
         }
 
