@@ -4,11 +4,6 @@
 # Intro
 lisp_in_cs is a C# implementation of Lisp. Several online resources, primarily Crafting Interpreters, Make a Lisp, codeproject.com, geeksforgeeks and also (minorly) various others were used as a guide. 
 
-
-### Table of Contents
-1. [How to Use](#How to Use)
-2. [Building](#building)
-
 ## How to Use
 Without an argument, lisp_in_cs operates a REPL loop that gives the user a command line prompt. This will run until the user enters Ctrl+C. When run with a lisp source file, Program.cs will attempt to execute it. 
 
