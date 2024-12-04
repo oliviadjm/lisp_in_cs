@@ -10,7 +10,7 @@ Without an argument, lisp_in_cs operates a REPL loop that gives the user a comma
 ## Building
 To build and run this project, please install .NET 6.0 SDK from the [.NET download website](https://dotnet.microsoft.com/en-us/download/dotnet/6.0).
 
-Then clone my repo
+Then clone the repo
 ```
 git clone https://github.com/oliviadjm/lisp_in_cs.git
 ```
@@ -26,5 +26,5 @@ in order to run the command line REPL loop, or run
 ```
 dotnet run test_cases.lisp
 ```
-to run with my test file. You can also replace test_cases.lisp with a lisp test file of your choosing. My implementation of lisp may or may not subscribe to certain lisp syntaxes - check my test file for the syntax I used regarding single & double quotes (primarily, but also other things).
+to run with the test file. You can also replace test_cases.lisp with a lisp test file of your choosing. Our implementation of lisp may or may not subscribe to certain lisp syntaxes - check the test file for the syntax used regarding single & double quotes (primarily, but also other things).
 
