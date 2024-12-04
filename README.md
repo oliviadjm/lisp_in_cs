@@ -2,7 +2,7 @@
 [//]: # (This document is best viewed on GitHub: https://github.com/oliviadjm/lisp_in_cs)
 
 # Intro
-lisp_in_cs is a C# implementation of Lisp. Several online resources, primarily Crafting Interpreters, Make a Lisp, codeproject.com, geeksforgeeks and also (minorly) various others were used as a guide. 
+lisp_in_cs is a C# implementation of Lisp. Several online resources, primarily Crafting Interpreters, Make a Lisp, codeproject.com, geeksforgeeks and also (minorly) various others were used as a guide. This project was completed by James Montgomery and Olivia Monteiro.
 
 ## How to Use
 Without an argument, lisp_in_cs operates a REPL loop that gives the user a command line prompt. This will run until the user enters Ctrl+C. When run with a lisp source file, Program.cs will attempt to execute it. 
