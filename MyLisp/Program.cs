@@ -56,6 +56,7 @@ namespace MyLisp {
                     return SExpr.Nil; //if no conditions are true
                 }
 
+
                 if (list.Elements[0] is SExpr.Atom defineAtom && defineAtom.Value == "define") {
                     if (list.Elements.Count != 4) {
                         throw new Exception("define requires a name, parameter list, and body.");
@@ -74,32 +75,20 @@ namespace MyLisp {
                             throw new Exception($"Function '{fnName.Value}' expects {paramList.Elements.Count} arguments, but got {args.Count}.");
                         }
 
-                        //create a new environment for the function call
-                        var localEnv = new Dictionary<string, SExpr>();
+                        //create a new environment inheriting from the parent
+                        var localEnv = new Environment(env);
 
-                        //bind arguments to parameters
+                        //bind parameters to evaluated arguments
                         for (int i = 0; i < paramList.Elements.Count; i++) {
                             var paramName = paramList.Elements[i] as SExpr.Atom;
                             if (paramName == null) {
                                 throw new Exception("Parameter list must contain only symbols.");
                             }
-                            localEnv[paramName.Value] = eval(args[i], env); //evaluate each argument
+                            localEnv.define(paramName.Value, eval(args[i], env)); // Evaluate args[i] in the calling environment
                         }
 
-                        //var functionEnv = new Environment(localEnv);
-                        //push the new environment
-                        env.pushEnvironment(localEnv);
-                        
-                        //maybe instead of pushing it i could set env equal to localEnv?
-                        //this would require some sort of constructor method
-
-                        //evaluate the body in the new environment
-                        var result = eval(body, env);
-
-                        //pop the environment after evaluation
-                        env.popEnvironment();
-
-                        return result;
+                        //evaluate the body in the local environment
+                        return eval(body, localEnv);
                     });
 
                     //define the function in the current environment
@@ -110,7 +99,6 @@ namespace MyLisp {
                 }
 
 
-
                 //evaluate the first element (the operator or function)
                 var op = eval(list.Elements[0], env);
                 //if (op is not SExpr.SEFunction function) {
@@ -119,8 +107,12 @@ namespace MyLisp {
 
                 if (op is SExpr.SEFunction function) {
                     //var args = list.Elements.Skip(1).Select(arg => eval(arg, env)).ToList();
-                    var args = list.Elements.Skip(1).ToList();
-                    return function.Invoke(args); // Invoke the function with arguments
+                    //var args = list.Elements.Skip(1).ToList();
+                    //return function.Invoke(args); // Invoke the function with arguments
+                   
+                    //evaluate each argument in the current environment
+                    var args = list.Elements.Skip(1).Select(arg => eval(arg, env)).ToList();
+                    return function.Invoke(args);
                 }
 
                 //evaluate the arguments

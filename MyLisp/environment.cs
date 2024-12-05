@@ -4,7 +4,6 @@ using System.Collections.Generic;
 namespace MyLisp {
 
     public class Environment {
-
         //environment stack
         private Stack<Dictionary<string, SExpr>> EnvStack = new Stack<Dictionary<string, SExpr>>();
 
@@ -36,11 +35,24 @@ namespace MyLisp {
             //EnvStack.pushEnvironment(Env);
         }
        
-       //public Environment(Dictionary <string, SExpr> localEnv) {
+        //public Environment(Dictionary <string, SExpr> localEnv) {
             //EnvStack.Push(localEnv);
         //}
 
-       
+        //constructor
+        public Environment(Environment parentEnv) {
+            //copy the parent environment stack
+            //EnvStack = new Stack<Dictionary<string, SExpr>>(new Stack<Dictionary<string, SExpr>>(parentEnv.EnvStack));
+            //add a new local environment on top of the stack
+            //EnvStack.Push(new Dictionary<string, SExpr>());
+
+            EnvStack.Push(new Dictionaryv<string, SExpr>());
+            foreach (var dict in parentEnv.EnvStack) {
+                EnvStack.Push(dict); //inherit from parent environment
+            }
+        }
+
+        
         //public SExpr lookup(string name, Dictionary<string, SExpr> Env) {
         public SExpr lookup(string name) { 
             foreach (var env in EnvStack) {

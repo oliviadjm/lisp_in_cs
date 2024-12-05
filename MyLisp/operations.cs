@@ -46,29 +46,26 @@ namespace MyLisp {
             }
         }
 
-        public static SExpr consCell (List <SExpr> inputList) {
-            SExpr head = inputList[0];
-            SExpr tail = inputList[1];
-
-            if (tail is SExpr.Quote quote) { //create a new list with `head` prepended to the elements of `tail`
-                if (quote.Expression is SExpr.SEList list) {
-                    //prepend `head` to the list
-                    var newList = new List<SExpr> { head };
-                    newList.AddRange(list.Elements); //add tail
-                    return new SExpr.SEList(newList);
-                    
-                }
-
-                //return quote.Prepend(head).ToList();
-            } 
-            else { //if tail is not a list, return a dotted pair
-                return new SExpr.SEList(new List<SExpr> { 
-                    head, tail 
-                });
+        public static SExpr consCell(List <SExpr> args) {
+            if (args.Count != 2) {
+                throw new Exception("cons expects exactly two arguments.");
             }
 
-            throw new Exception("probelms");
+            var first = args[0];
+            var second = args[1];
+
+            //ensure the second argument is a list
+            if (second is SExpr.SEList secondList) {
+                //prepend the first argument to the second list
+                var newElements = new List<SExpr> { first };
+                newElements.AddRange(secondList.Elements);
+                return new SExpr.SEList(newElements);
+            }
+
+            //if the second argument is not a list, treat it as the tail
+            return new SExpr.SEList(new List<SExpr> { first, second });
         }
+
 
         public static SExpr carVal (List <SExpr> inputList) {
             if (inputList[0] is SExpr.SEList list && list.Elements.Count > 0) {
