@@ -1,7 +1,7 @@
 
 <img width="591" alt="tests" src="https://github.com/user-attachments/assets/cc118745-56d8-4b30-8f8f-cfc46ae11aa4">
 
-
+This project was completed by James Montgomery and Olivia Monteiro. The Test for the entire code is shown in the very top of the README right above this message but has also been submitted as a separate image file called "tests" to the submission. Snapshots have been submitted as separate .zip files with the name of each sprint. PLEASE NOTE that we completed sprints 2, 3, 4 CONCURRENTLY so the zip files will be fairly similar. All this information has also been included in the SUBMISSION NOTES!
 
 [//]: # (This document is best viewed on GitHub: https://github.com/oliviadjm/lisp_in_cs)
 
