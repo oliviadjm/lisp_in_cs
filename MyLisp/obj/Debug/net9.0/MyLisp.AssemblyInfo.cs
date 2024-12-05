@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MyLisp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a91167dd87f83e9d6d929ef6bc88c0f4ee91d138")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f80bc2a12ad1c22d94a70e1d512ccb824cc7117a")]
 [assembly: System.Reflection.AssemblyProductAttribute("MyLisp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MyLisp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
