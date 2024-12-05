@@ -1,4 +1,8 @@
 
+<img width="591" alt="tests" src="https://github.com/user-attachments/assets/cc118745-56d8-4b30-8f8f-cfc46ae11aa4">
+
+
+
 [//]: # (This document is best viewed on GitHub: https://github.com/oliviadjm/lisp_in_cs)
 
 # Intro
