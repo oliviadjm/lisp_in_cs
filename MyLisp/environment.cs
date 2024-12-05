@@ -46,7 +46,7 @@ namespace MyLisp {
             //add a new local environment on top of the stack
             //EnvStack.Push(new Dictionary<string, SExpr>());
 
-            EnvStack.Push(new Dictionaryv<string, SExpr>());
+            EnvStack.Push(new Dictionary <string, SExpr>());
             foreach (var dict in parentEnv.EnvStack) {
                 EnvStack.Push(dict); //inherit from parent environment
             }
